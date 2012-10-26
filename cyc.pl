@@ -22,21 +22,41 @@
 use strict;
 use warnings;
 use File::Find;
+use Getopt::Long;
 
-my $extension = {
-	'.sh' => 'Bash/Sh',
-	'.c'  => 'C',
-	'.pl' => 'Perl',
-	'.pm' => 'Perl Module',
-	};
+my $do_stats = undef;
 
+my $ret = GetOptions ( "stats" => \$do_stats );
+
+# Source file valid for stats
+my %extension = (
+	sh => 'Bash/Sh',
+	c  => 'C',
+	pl => 'Perl',
+	pm => 'Perl Module',
+	);
+
+my %code_stats;
+
+# Variable where lines are counted.
 my $code_lines = 0;
 
 my $count_lines = sub {
 	if (-f $_) {
-		my $lines = `wc -l $_ | cut -d' ' -f1`;
-		chomp($lines);
-		$code_lines += $lines;
+		my ($file_extension) = $_ =~ /^.*\.([a-zA-Z0-9]+)$/i;
+		if (defined $file_extension) {
+			if (exists $extension{$file_extension}){
+				my $lines = `wc -l $_ | cut -d' ' -f1`;
+				chomp($lines);
+				$code_lines += $lines;
+				
+				if (defined $do_stats) {
+					if (exists $extension{$file_extension} ) {
+						$code_stats{$file_extension} += $lines;
+					}
+				}
+			}
+		}
 	}
 };
 
@@ -45,3 +65,12 @@ foreach my $argument (@ARGV) {
 }
 
 print $code_lines . "\n";
+
+if (defined $do_stats) {
+	print "Code stats:\n";
+	foreach my $lang (sort keys %code_stats) {
+		print "$extension{$lang}: $code_stats{$lang}\n";
+	}
+}
+
+exit 0;
