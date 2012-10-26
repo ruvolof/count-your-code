@@ -29,7 +29,7 @@ function help {
 	echo "Usage: ./install.sh <options>"
 	echo "Available options:"
 	echo "	-h, --help	Show this help and exit."
-	echo "	--force	Force reinstall."
+	echo "	--force		Force reinstall."
 	echo "	uninstall	Uninstall Count-Your-Code."
 }
 
