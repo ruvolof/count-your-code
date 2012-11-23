@@ -51,7 +51,9 @@ my %extension = (
 	txt => 'Plain Text',
 	);
 
-my %code_stats;
+my %code_stats = (
+	Unknown => '',
+	);
 
 # Variable where lines are counted.
 my $code_lines = 0;
@@ -71,6 +73,11 @@ my $count_lines = sub {
 					}
 				}
 			}
+			else {
+				if ($code_stats{Unknown} !~ m/\b$file_extension\b/) {
+					$code_stats{Unknown} = join(' ', $code_stats{Unknown}, $file_extension);
+				}
+			}
 		}
 	}
 };
@@ -84,8 +91,9 @@ print $code_lines . "\n";
 if (defined $do_stats) {
 	print "Code stats:\n";
 	foreach my $lang (sort keys %code_stats) {
-		print "$extension{$lang}: $code_stats{$lang}\n";
+		print "$extension{$lang}: $code_stats{$lang}\n" unless $lang eq 'Unknown';
 	}
+	print "Unkown extension: $code_stats{Unknown}\n";
 }
 
 exit 0;
