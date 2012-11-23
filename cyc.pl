@@ -30,10 +30,25 @@ my $ret = GetOptions ( "stats" => \$do_stats );
 
 # Source file valid for stats
 my %extension = (
+	# Bash
 	sh => 'Bash/Sh',
+	
+	# C Family
+	h => 'C/C++ Header',
+	hh => 'C++ Header',
 	c  => 'C',
+	cc => 'C++',
+	cpp => 'C++',
+
+	# Perl
 	pl => 'Perl',
 	pm => 'Perl Module',
+	
+	# Python
+	py => 'Python',
+	
+	# Others
+	txt => 'Plain Text',
 	);
 
 my %code_stats;
