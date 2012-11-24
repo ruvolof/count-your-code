@@ -47,6 +47,14 @@ my %extension = (
 	# Python
 	py => 'Python',
 	
+	# Java
+	java => 'Java',
+	
+	# General Markup
+	xml => 'XML',
+	html => 'HTML',
+	html => 'HTML',
+	
 	# Others
 	txt => 'Plain Text',
 	);
