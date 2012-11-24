@@ -76,9 +76,7 @@ my $count_lines = sub {
 				$code_lines += $lines;
 				
 				if (defined $do_stats) {
-					if (exists $extension{$file_extension} ) {
-						$code_stats{$file_extension} += $lines;
-					}
+					$code_stats{$extension{$file_extension}} += $lines;
 				}
 			}
 			else {
@@ -99,9 +97,9 @@ print $code_lines . "\n";
 if (defined $do_stats) {
 	print "Code stats:\n";
 	foreach my $lang (sort keys %code_stats) {
-		print "$extension{$lang}: $code_stats{$lang}\n" unless $lang eq 'Unknown';
+		print "$lang: $code_stats{$lang}\n" unless $lang eq 'Unknown';
 	}
-	print "Unkown extension: $code_stats{Unknown}\n";
+	print "Unkown extension: $code_stats{Unknown}\n" if $code_stats{Unknown};
 }
 
 exit 0;
