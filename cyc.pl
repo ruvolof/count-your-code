@@ -59,9 +59,9 @@ my %extension = (
 	txt => 'Plain Text',
 	);
 
-my %code_stats = (
-	Unknown => '',
-	);
+my %code_stats;
+
+my $unknown = '';
 
 # Variable where lines are counted.
 my $code_lines = 0;
@@ -80,8 +80,8 @@ my $count_lines = sub {
 				}
 			}
 			else {
-				if ($code_stats{Unknown} !~ m/\b$file_extension\b/) {
-					$code_stats{Unknown} = join(' ', $code_stats{Unknown}, $file_extension);
+				if ($unknown !~ m/\b$file_extension\b/) {
+					$unknown = join(' ', $unknown, $file_extension);
 				}
 			}
 		}
@@ -95,11 +95,14 @@ foreach my $argument (@ARGV) {
 print $code_lines . "\n";
 
 if (defined $do_stats) {
+	# Ordering the hash by values
+	my @ordered = sort { $code_stats{$b} <=> $code_stats{$a} } keys %code_stats;
+	
 	print "Code stats:\n";
-	foreach my $lang (sort keys %code_stats) {
-		print "$lang: $code_stats{$lang}\n" unless $lang eq 'Unknown';
+	foreach my $lang (@ordered) {
+		print "$lang: $code_stats{$lang}\n";
 	}
-	print "Unkown extension: $code_stats{Unknown}\n" if $code_stats{Unknown};
+	print "Unkown extension: $unknown\n" if $unknown;
 }
 
 exit 0;
