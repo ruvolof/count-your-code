@@ -98,7 +98,7 @@ if (defined $do_stats) {
 	# Ordering the hash by values
 	my @ordered = sort { $code_stats{$b} <=> $code_stats{$a} } keys %code_stats;
 	
-	print "Code stats:\n";
+	print "\nCode stats:\n";
 	foreach my $lang (@ordered) {
 		print "$lang: $code_stats{$lang}\n";
 	}
