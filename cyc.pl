@@ -32,6 +32,7 @@ my $ret = GetOptions ( "stats" => \$do_stats );
 my %extension = (
 	# Bash
 	sh => 'Bash/Sh',
+	bash => 'Bash/Sh',
 	
 	# C Family
 	h => 'C/C++ Header',
