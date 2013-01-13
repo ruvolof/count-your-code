@@ -39,10 +39,16 @@ my %extension = (
 	c  => 'C',
 	cc => 'C++',
 	cpp => 'C++',
+	
+	# CSS
+	css => 'CSS',
 
 	# Perl
 	pl => 'Perl',
 	pm => 'Perl Module',
+	
+	# PHP
+	php => 'PHP',
 	
 	# Python
 	py => 'Python',
@@ -50,10 +56,15 @@ my %extension = (
 	# Java
 	java => 'Java',
 	
+	# Javascript
+	js => 'Javascript',
+	
 	# General Markup
 	xml => 'XML',
+	htm => 'HTML',
 	html => 'HTML',
-	html => 'HTML',
+	md => 'Markdown',
+	markdown => 'Markdown',
 	
 	# Others
 	txt => 'Plain Text',
