@@ -47,6 +47,7 @@ my %extension = (
 	# Perl
 	pl => 'Perl',
 	pm => 'Perl Module',
+	pod => 'Perl Documentation',
 	
 	# PHP
 	php => 'PHP',
