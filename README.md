@@ -1,4 +1,4 @@
-CYC - Count your Code
+CYC - Count Your Code
 ==========================
 
 Count Your Code is a Perl script to analyze your source tree and cound how many code lines you've written.
