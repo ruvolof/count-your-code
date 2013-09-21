@@ -29,7 +29,7 @@ function help {
 	echo "Usage: ./install.sh <options>"
 	echo "Available options:"
 	echo "	-h, --help	Show this help and exit."
-	echo "	--force		Force reinstall."
+	echo "	--reinstall	Force reinstall."
 	echo "	uninstall	Uninstall Count-Your-Code."
 }
 
@@ -62,7 +62,7 @@ if [[ "$*" =~ uninstall ]] ; then
 fi
 
 if [ $ROOT -eq 0 ] ; then
-	if [ ! -e "$BIN" ] || [[ "$*" =~ --force ]] ; then
+	if [ ! -e "$BIN" ] || [[ "$*" =~ --reinstall ]] ; then
 		echo "Copying $PWD/cyc.pl to $BIN..."
 		cp cyc.pl $BIN
 	else
@@ -70,7 +70,7 @@ if [ $ROOT -eq 0 ] ; then
 	fi
 else
 	mkdir -p "$HOME/bin"
-	if [ ! -e $HOMEBIN ] || [[ "$*" =~ --force ]] ; then
+	if [ ! -e $HOMEBIN ] || [[ "$*" =~ --reinstall ]] ; then
 		echo "Copying $PWD/cyc.pl to $HOMEBIN..."
 		cp cyc.pl $HOMEBIN
 	else
