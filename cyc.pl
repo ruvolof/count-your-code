@@ -26,11 +26,17 @@ use Getopt::Long;
 
 my $PROGNAME = 'CYC';
 my $VERSION = '1.0';
-my $AUTHOR = 'Francesco Ruvolo - ruvolof@gmail.com';
+my $AUTHOR = 'Francesco Ruvolo <ruvolof@gmail.com>';
 
 my $do_stats = undef;
 
-my $ret = GetOptions ( "stats" => \$do_stats );
+my $version = sub {
+	print "$PROGNAME $VERSION - $AUTHOR\n";
+	exit 0;
+};
+
+my $ret = GetOptions ( "version" => $version,
+					   "stats" => \$do_stats );
 
 # Source file valid for stats
 my %extension = (
