@@ -38,6 +38,6 @@ You can use __--stats__ in order to have a different counting for every programm
 
 Or:
 
-`cyc --stats my/whole/programming/directory` 
-`cyc --stats *` 
+`cyc --stats my/whole/programming/directory`  
+`cyc --stats *`  
 `cyc --stats folder1 folder2 file1 file2`
