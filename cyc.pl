@@ -35,7 +35,17 @@ my $version = sub {
 	exit 0;
 };
 
+my $help = sub {
+	print "Usage: cyc <options> <DIRECTORIES_LIST> <FILES_LIST>\n";
+	print "Available options:\n";
+	print "\t-h, --help\tPrint this help and exit.\n";
+	print "\t--stats\t\tPrint detailed stats about programming languages.\n";
+	print "\t--version\tPrint version.\n";
+	exit 0;
+};
+
 my $ret = GetOptions ( "version" => $version,
+					   "h|help" => $help,
 					   "stats" => \$do_stats );
 
 # Source file valid for stats
