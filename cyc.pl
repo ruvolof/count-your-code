@@ -104,7 +104,7 @@ my $count_lines = sub {
 		my ($file_extension) = $_ =~ /^.*\.([a-zA-Z0-9]+)$/i;
 		if (defined $file_extension) {
 			if (exists $extension{$file_extension}){
-				my $lines = `wc -l $_ | cut -d' ' -f1`;
+				my $lines = `wc -l "$_" | cut -d' ' -f1`;
 				chomp($lines);
 				$code_lines += $lines;
 				
