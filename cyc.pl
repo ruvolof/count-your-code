@@ -125,7 +125,7 @@ foreach my $argument (@ARGV) {
 	find( { wanted => $count_lines }, $argument );
 }
 
-print $code_lines . "\n";
+print 'Total: ' . $code_lines . "\n";
 
 if (defined $do_stats) {
 	# Ordering the hash by values
