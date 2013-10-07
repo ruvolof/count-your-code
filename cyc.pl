@@ -24,7 +24,7 @@ use warnings;
 use File::Find;
 use Getopt::Long;
 
-my $PROGNAME = 'CYC';
+my $PROGNAME = 'Count Your Code';
 my $VERSION = '1.0';
 my $AUTHOR = 'Francesco Ruvolo <ruvolof@gmail.com>';
 
