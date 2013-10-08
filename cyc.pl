@@ -64,6 +64,9 @@ my %extension = (
 	# CSS
 	css => 'CSS',
 
+	# HDL (Hardware Description Language)
+	vl => 'Verilog'
+
 	# Perl
 	pl => 'Perl',
 	pm => 'Perl Module',
