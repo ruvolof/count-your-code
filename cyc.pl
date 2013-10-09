@@ -66,6 +66,7 @@ my %extension = (
 
 	# HDL (Hardware Description Language)
 	vl => 'Verilog'
+	v => 'Verilog'
 
 	# Perl
 	pl => 'Perl',
