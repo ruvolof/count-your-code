@@ -65,8 +65,8 @@ my %extension = (
 	css => 'CSS',
 
 	# HDL (Hardware Description Language)
-	vl => 'Verilog'
-	v => 'Verilog'
+	vl => 'Verilog',
+	v => 'Verilog',
 
 	# Perl
 	pl => 'Perl',
@@ -125,8 +125,12 @@ my $count_lines = sub {
 	}
 };
 
+my $exclude_dir = sub {
+	grep { $_ !~ /\.(git|bzr)/ } @_;
+};
+
 foreach my $argument (@ARGV) {
-	find( { wanted => $count_lines }, $argument );
+	find( { wanted => $count_lines, preprocess => $exclude_dir }, $argument );
 }
 
 print 'Total: ' . $code_lines . "\n";
