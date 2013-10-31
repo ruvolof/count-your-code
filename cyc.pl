@@ -64,6 +64,13 @@ my %extension = (
 	# CSS
 	css => 'CSS',
 
+	# .NET Framework
+	fs => 'F#',
+	fsi => 'F#',
+	fsx => 'F#',
+	cs => 'C#',
+	csx => 'C#',
+
 	# HDL (Hardware Description Language)
 	vl => 'Verilog',
 	v => 'Verilog',
