@@ -87,11 +87,13 @@ my %extension = (
 	# Typescript
 	ts => 'Typescript',
 	# General Markup
-	xml => 'XML',
 	htm => 'HTML',
 	html => 'HTML',
 	md => 'Markdown',
 	markdown => 'Markdown',
+	# Data description
+	xml => 'XML',
+	json => 'Json',
 	# Others
 	txt => 'Plain Text',
 );
@@ -135,7 +137,7 @@ my $exclude_dir = sub {
 	# Exclude IDE folders
 	@_ = grep { $_ !~ /\.idea/ } @_;
 	# Exclude build files
-	grep { $_ !~ /build/ } @_;
+	grep { $_ !~ /(build|release)/ } @_;
 };
 
 foreach my $argument (@ARGV) {
