@@ -52,56 +52,49 @@ my $ret = GetOptions ( "version" => $version,
 my %extension = (
 	# Bash
 	sh => 'Bash/Sh',
-	bash => 'Bash/Sh',
-	
+	bash => 'Bash/Sh',	
 	# C Family
 	h => 'C/C++ Header',
 	hh => 'C++ Header',
 	c  => 'C',
 	cc => 'C++',
 	cpp => 'C++',
-	
 	# CSS
 	css => 'CSS',
-
 	# .NET Framework
 	fs => 'F#',
 	fsi => 'F#',
 	fsx => 'F#',
 	cs => 'C#',
 	csx => 'C#',
-
 	# HDL (Hardware Description Language)
 	vl => 'Verilog',
 	v => 'Verilog',
-
 	# Perl
 	pl => 'Perl',
 	pm => 'Perl Module',
 	pod => 'Perl Documentation',
-	
 	# PHP
 	php => 'PHP',
-	
 	# Python
 	py => 'Python',
-	
 	# Java
 	java => 'Java',
-	
+	# Kotlin
+	kt => 'Kotlin',
 	# Javascript
 	js => 'Javascript',
-	
+	# Typescript
+	ts => 'Typescript',
 	# General Markup
 	xml => 'XML',
 	htm => 'HTML',
 	html => 'HTML',
 	md => 'Markdown',
 	markdown => 'Markdown',
-	
 	# Others
 	txt => 'Plain Text',
-	);
+);
 
 my %code_stats;
 
@@ -133,7 +126,16 @@ my $count_lines = sub {
 };
 
 my $exclude_dir = sub {
-	grep { $_ !~ /\.(git|bzr)/ } @_;
+	# Exclude CVS
+	@_ = grep { $_ !~ /\.(git|bzr)/ } @_;
+	# Exclude Node libraries
+	@_ = grep { $_ !~ /node_modules/ } @_;
+	# Exclude venv folders
+	@_ = grep { $_ !~ /venv/ } @_;
+	# Exclude IDE folders
+	@_ = grep { $_ !~ /\.idea/ } @_;
+	# Exclude build files
+	grep { $_ !~ /build/ } @_;
 };
 
 foreach my $argument (@ARGV) {
